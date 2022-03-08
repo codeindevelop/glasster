@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('sms_token')->nullable();
             $table->string('activation_token')->nullable();
             $table->text('register_ip')->nullable();
-            $table->boolean('active');
-            $table->string('password');
+            $table->boolean('active')->default(false);
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

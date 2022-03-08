@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Profile\PersonalUserInfo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -74,4 +75,12 @@ class User extends Authenticatable
      {
          return !is_null($this->mobile_verified_at);
      }
+
+     
+    // Get user personal information
+    public function personalInfos()
+    {
+        return $this->hasOne(PersonalUserInfo::class);
+    }
+
 }
