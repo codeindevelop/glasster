@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Database\Seeders\Auth\PermissionsSeeder;
+use Database\Seeders\Blog\PostsCategorySeeder;
+use Database\Seeders\Blog\PostStatusSeeder;
 use Database\Seeders\Email\AuthEmailSeeder;
 use Database\Seeders\Localization\CountrySeeder;
 use Database\Seeders\Localization\LanguageSeeder;
@@ -71,5 +73,11 @@ class DatabaseSeeder extends Seeder
         
         // Auth Email Templates Seeder
         $this->call(AuthEmailSeeder::class);
+
+        // Post Default Category Seeder
+        $this->call(PostsCategorySeeder::class);
+
+        // Post Publish status Seeder
+        $this->call(PostStatusSeeder::class);
     }
 }

@@ -821,6 +821,34 @@
 					"name": "Login",
 					"item": [
 						{
+							"name": "Login Superadmin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"super@admin.com\",\r\n    \"password\": \"supersuper\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/login",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Login User",
 							"request": {
 								"method": "POST",
@@ -868,34 +896,6 @@
 							"response": []
 						},
 						{
-							"name": "Login Superadmin",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"super@admin.com\",\r\n    \"password\": \"supersuper\"\r\n\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseURL}}/api/v1/login",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"login"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Login Admin",
 							"request": {
 								"method": "POST",
@@ -926,6 +926,511 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Post",
+					"item": [
+						{
+							"name": "Get all posts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/posts",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a post",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_id\": 1,\r\n    \"publish_id\" : 1,\r\n    \"post_name\": \"{{$randomProductName}}\",\r\n    \"slug\": \"\",\r\n    \"post_content\": \"content\",\r\n    \"post_featured_image\": \" image\",\r\n    \"comment_status\": true,\r\n    \"active\": true,\r\n    \"tags\": \"tags\",\r\n    \"publish_date\": \"2021-01-04 14:08:20\",\r\n    \"search_engine_flow\": \"flow\",\r\n    \"search_engine_index\": \"index\",\r\n    \"canonical_link\": \"\",\r\n    \"meta_title\": \"meta title\",\r\n    \"meta_keywords\": \"meta keywords\",\r\n    \"meta_description\": \"meta description\",\r\n    \"meta_tags\": \"meta tags\",\r\n    \"og_locale\": \"og_locale\",\r\n    \"og_title\": \"og_title\",\r\n    \"og_description\": \"og_description\",\r\n    \"og_type\": \"og_type\",\r\n    \"og_url\": \"og_url\",\r\n    \"og_site_name\": \"og_site_name\",\r\n    \"twitter_card\": \"twitter_card\",\r\n    \"twitter_creatort\": \"twitter_creatort\",\r\n    \"twitter_label1\": \"twitter_label1\",\r\n    \"twitter_data1\": \"twitter_data1\",\r\n    \"twitter_label2\": \"twitter_label2\",\r\n    \"twitter_data2\": \"twitter_data2\",\r\n    \"twitter_site\": \"twitter_site\",\r\n    \"twitter_title\": \"twitter_title\",\r\n    \"twitter_description\": \"twitter_description\",\r\n    \"twitter_url\": \"twitter_url\",\r\n    \"twitter_image\": \"twitter_image\",\r\n    \"article_publisher\": \"article_publisher\",\r\n    \"article_publish_time\": \"article_publish_time\",\r\n    \"article_modified_time\": \"article_modified_time\"\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get post by id",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 24\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/get-post-id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"get-post-id"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update post by id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_id\": 1,\r\n    \"publish_id\" : 3,\r\n    \"post_name\": \"javad\",\r\n    \"slug\": \"/asdasdfasdf\",\r\n\r\n    \"post_content\": \"content\",\r\n    \"tags\": \"tags\",\r\n    \"post_featured_image\": \" image\",\r\n    \"comment_status\": true,\r\n    \"active\": false,\r\n    \"publish_date\": \"2021-01-04 14:08:20\",\r\n    \"post_password\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post/2",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete post by id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post/2",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get  post by url",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post/rustic-plastic-sausages",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post",
+										"rustic-plastic-sausages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "get all post-comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-comments",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create post-comment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"post_id\": 1,\r\n    \"comment_parent\": \"\",\r\n    \"comment_author_email\": \"\",\r\n    \"comment_author_url\": \"\",\r\n    \"comment_author_IP\": \"\",\r\n    \"comment_content\": \"comment\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-comment",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get post-comment by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-comment/2",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-comment",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete post-comment by id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-comment/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-comment",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Post Status",
+					"item": [
+						{
+							"name": "create status",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mode\": \"draft\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-status",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all status modes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-status",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Status",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mode\": \"draft\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-status/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Status",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-status/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "Get All Post Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-category",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show Categoy By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-category/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category By Id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"اخبار\",\r\n    \"parent_id\": 1,\r\n    \"category_link_slug\": \"news\",\r\n    \"active\": false\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-category/22",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-category",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-category/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Post Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"آموزشی\",\r\n    \"parent_id\": 1,\r\n    \"category_link_slug\": \"tutorial\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/v1/post-category",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"post-category"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IzZGZjMmQwMjk2MjVjMDQxZTM1MTFiYTlmZWUyOTBhYjZlNmMzZjZhNGM4ZTJlODY1NDA0MDNkN2U0MDk1ZDlhMTIwM2E5MDFmZjRlYTQiLCJpYXQiOjE2NDY3NDAxOTUuMTI0NTIxLCJuYmYiOjE2NDY3NDAxOTUuMTI0NTI3LCJleHAiOjE2NjI2Mzc3OTUuMTE1ODY5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.he2rZPNokLnW1joqCYK7fdQ-KFgk049KBn0_uP__FmKdzaiJSWvN_DoQ3pOugJQXVu_BastbpmMXjnVHkcGodYBBJv89y08JucYFk32JOv6zLySTQvn7JfU1T4khWjTPN5WualFaWz0jFWJwFyWc-9WiOf6_YwdQZfLIWpbklhgGfGyC1g4Tq-PFj2_0eIWswFLejbSUO2GBOAAzqxPwi9Uy3SN0XhzqDDAM5aHJ-SyDinJ7laAXsubyApExS4vxT67-UYQBDpjDNVjGKozlLQFW2c5LzjxIuNDqU9fxbDWl29NCkNx8xMMppvU5anrXfFRNIb5zk1hQqPUuVfkZ0BR7J2YTC5CQHT890Do5NPWLyxQQb5fcJkJYo3Qo6Um7LtE_ZNMKPzpYWsuYiYJiho4CiVWnRN1nkOSXLYbff4hDAmxl12bEaH7Eoeg_eYpEhSU6Xb20OpsTZFk8hyyu77eVXxtPxGmVlilX3gGaeE2ogDm4bTOY0aM8CaL690vzGXUBsl8Y1OHJWcO3X15TRCLhAmTWRzvasyXE5v_mDczzEPfi8qhZu4UAQJNfHUaasJ6DNCt-j7JLJIa34X16qBNW90SMqLbBB7rGF1-aeAcqeHsUsY79g1-QXRuIY4cxPNy_1JcZ1ItCII3bROhFjwyR932m00gSMlmHpdxQ4QY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
