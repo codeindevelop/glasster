@@ -54,7 +54,7 @@ class ActiveUser extends Mailable
      */
     public function build()
     {
-        return $this->view('email.auth.signup.activesignup')->subject('حساب شما فعال گردید')->with([
+        return $this->view('email.auth.signup.activesignup')->subject($this->subject)->with([
             'first_name' => $this->user->first_name,
             'date' => $this->date,
             'time' => $this->time,

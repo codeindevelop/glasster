@@ -41,5 +41,31 @@ class AuthEmailSeeder extends Seeder
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);
+
+        DB::table('email_templates')->insert([
+            "id" => 3,
+            "language_id" => 2,
+            "template_name" => "بازیابی رمز عبور",
+            "subject" => "بازیابی رمز عبور",
+            "from_name" => "hi@company.com",
+
+            "email_text" => "جهت بازیابی رمزعبور لطفا ، روی دکمه زیر کلیک کنید",
+            "active" => true,
+            "created_at" => Carbon::now(),
+            "updated_at" => Carbon::now()
+        ]);
+
+        DB::table('email_templates')->insert([
+            "id" => 4,
+            "language_id" => 2,
+            "template_name" => "تغییر موفق رمز عبور",
+            "subject" => "تغییر موفق رمز عبور",
+            "from_name" => "hi@company.com",
+
+            "email_text" => "زمر عبور شما با موفقیت تغییر کرد و در سامانه ثبت گردید ، لطفا جهت ورود به سامانه از رمز عبور جدید استفاده نمایید.",
+            "active" => true,
+            "created_at" => Carbon::now(),
+            "updated_at" => Carbon::now()
+        ]);
     }
 }

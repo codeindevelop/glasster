@@ -43,7 +43,7 @@ class PasswordResetController extends Controller
 
             $ip = $request->ip();
             // dispatch process password req job
-            ProcessPasswordResetReq::dispatchAfterResponse($user,$ip);
+            ProcessPasswordResetReq::dispatchAfterResponse($user,$ip,$passwordReset);
 
 
             return response()->json([

@@ -47,7 +47,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\" : \"user@example.com\",\r\n    \"password\" : \"password\",\r\n    \"password_confirmation\" : \"password\",\r\n    \"token\" : \"HL4lefTTr7qIBlAoUGMNZt47uz9TCcIaBXevDEACYr0aHN617cMNeJAR3qgn\"\r\n}",
+									"raw": "{\r\n    \"email\" : \"user@test.com\",\r\n    \"password\" : \"password\",\r\n    \"password_confirmation\" : \"password\",\r\n    \"token\" : \"s1UudDwdgBvKf2ZaXufFQd1M5xYz4k2IIF6boRB9CUQquxneciu26rmqkT4S\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -794,7 +794,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"user_name\": \"usertest\",\r\n    \"first_name\": \"هادی\",\r\n    \"last_name\": \"example\",\r\n    \"mobile_number\": \"09154\",\r\n    \"email\": \"user@test.com\",\r\n    \"password\": \"useruser\",\r\n    \"password_confirmation\": \"useruser\",\r\n    \"portal_id\" : 1\r\n}",
+									"raw": "{\r\n    \"user_name\": \"user\",\r\n    \"first_name\": \"test\",\r\n    \"last_name\": \"example\",\r\n    \"mobile_number\": \"00\",\r\n    \"email\": \"user@test.com\",\r\n    \"password\": \"useruser\",\r\n    \"password_confirmation\": \"useruser\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"

@@ -22,17 +22,19 @@ class ProcessPasswordResetReq implements ShouldQueue
      */
     private $user;
     private $ip;
+    private $passwordReset;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user, $ip)
+    public function __construct(User $user, $ip,$passwordReset)
     {
         //
         $this->user = $user;
         $this->ip = $ip;
+        $this->token = $passwordReset->token;
     }
 
     /**
@@ -44,10 +46,11 @@ class ProcessPasswordResetReq implements ShouldQueue
     {
         $user = $this->user;
         $ip = $this->ip;
+        $token = $this->token;
 
 
 
         // Send email for notify user is active
-        Mail::to($user->email)->send(new PasswordResetRequest($user, $ip));
+        Mail::to($user->email)->send(new PasswordResetRequest($user, $ip,$token));
     }
 }
