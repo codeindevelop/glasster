@@ -1,8 +1,21 @@
 {
-    "name": "laravel/laravel",
+    "name": "luxiloom/glasster",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Glasster is a API server based on Laravel for create ACL (Access Control Level) and blog system with laravel , mysql , docker",
+    "keywords": [
+        "framework",
+        "glasster",
+        "acl",
+        "cms",
+        "blog"
+    ],
+    "authors": [
+        {
+            "name": "Hadi Mousavi",
+            "email": "hi@codeindev.com",
+            "homepage": "https://codeindev.com"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
