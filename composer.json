@@ -9,6 +9,13 @@
         "cms",
         "blog"
     ],
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/luxiloom/glasster"
+        }
+    ],
     "authors": [
         {
             "name": "Hadi Mousavi",
@@ -74,6 +81,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
