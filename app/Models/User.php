@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens,HasRoles, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'firs_name',
+        'first_name',
         'last_name',
         'profile_pic',
         'mobile_number',
@@ -27,6 +28,10 @@ class User extends Authenticatable
         'register_ip',
         'active',
     ];
+
+    protected $guard_name = 'api';
+
+    protected $dates = ['deleted_at'];
 
 
     /**
@@ -50,4 +55,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'mobile_verified_at' => 'datetime',
     ];
+
+
+     // Check user phone verification
+     public function userMobileVerified()
+     {
+         return !is_null($this->mobile_verified_at);
+     }
 }
