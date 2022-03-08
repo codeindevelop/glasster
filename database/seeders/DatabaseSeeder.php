@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Database\Seeders\Auth\PermissionsSeeder;
+use Database\Seeders\Email\AuthEmailSeeder;
 use Database\Seeders\Localization\CountrySeeder;
 use Database\Seeders\Localization\LanguageSeeder;
 use Database\Seeders\Localization\TimeZoneSeeder;
@@ -66,5 +67,9 @@ class DatabaseSeeder extends Seeder
 
         // Roles , Permissions and default admin seeder
         $this->call(PermissionsSeeder::class);
+
+        
+        // Auth Email Templates Seeder
+        $this->call(AuthEmailSeeder::class);
     }
 }

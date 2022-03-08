@@ -33,6 +33,18 @@ class User extends Authenticatable
 
     protected $dates = ['deleted_at'];
 
+    
+    protected static $logAttributes = [
+        'first_name',
+        'last_name',
+        'mobile_number',
+        'profile_pic',
+        'activation_token',
+        'active',
+        'email',
+        'password',
+    ];
+
 
     /**
      * The attributes that should be hidden for serialization.
