@@ -63,7 +63,7 @@ Route::prefix('v1')->group(function () {
         Route::delete('user/{id}', [AuthController::class, 'destroy']);
         // important this api updated user by admin
         Route::put('update-user/{id}', [AuthController::class, 'update']);
-         // important this api updated profile by ownuser
+        // important this api updated profile by ownuser
         Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
         Route::get('users', [AuthController::class, 'getAllUsers']);
         Route::get('profile', [AuthController::class, 'profile']);
@@ -88,9 +88,6 @@ Route::prefix('v1')->group(function () {
         Route::delete('permission/{id}', [PermissionController::class, 'destroy']);
         Route::get('user-permissions', [PermissionController::class, 'getUsersByPermission']);
         Route::get('get-user-permission/{id}', [PermissionController::class, 'getUserPermissionById']);
-
-        
-        
     });
 
 
