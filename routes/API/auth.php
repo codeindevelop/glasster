@@ -3,9 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\auth\AuthController;
+use App\Http\Controllers\API\auth\LoginController;
 use App\Http\Controllers\API\auth\OtpAuthController;
 use App\Http\Controllers\API\auth\PasswordResetController;
 use App\Http\Controllers\API\Auth\PermissionController;
+use App\Http\Controllers\API\auth\ProfileController;
+use App\Http\Controllers\API\auth\RegisterController;
 use App\Http\Controllers\API\Auth\RoleController;
 use Illuminate\Support\Facades\DB;
 
@@ -29,30 +32,20 @@ Route::prefix('v1')->group(function () {
     }
 
 
-    Route::post('register', [AuthController::class, 'register']);
-    Route::get('register/activation/{token}', [AuthController::class, 'signupActive']);
+    Route::post('register', [RegisterController::class, 'register']);
+    Route::get('register/activation/{token}', [RegisterController::class, 'signupActive']);
 
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
+    // account loockup for login API
+    Route::post('account-loockup', [LoginController::class, 'accountLookup']);
+
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->middleware('auth:api');
 
 
     Route::middleware("auth:api")->group(function () {
 
-
-
-
-        Route::post('get-verification-sms', [AuthController::class, 'getMobileCode']);
-        Route::post('verification-sms', [AuthController::class, 'storeMobileVerification']);
-        Route::post('change-mobile-number', [AuthController::class, 'changeMobileNumber']);
-
-
-
-
         // Get User Profile
-        Route::get('profile', [AuthController::class, 'profile']);
-
-        // Upload User document
-        Route::post('verification-account', [PersonalUserInfoController::class, 'storeVerificationByUser']);
+        Route::get('profile', [ProfileController::class, 'profile']);
 
         // Users API Route
         Route::post('create-user', [AuthController::class, 'createUser']);
@@ -61,8 +54,10 @@ Route::prefix('v1')->group(function () {
         Route::put('trashed-user/{id}', [AuthController::class, 'restoreTrashedUsers']);
         Route::get('getuser/{id}', [AuthController::class, 'getUserById']);
         Route::delete('user/{id}', [AuthController::class, 'destroy']);
+
         // important this api updated user by admin
         Route::put('update-user/{id}', [AuthController::class, 'update']);
+
         // important this api updated profile by ownuser
         Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
         Route::get('users', [AuthController::class, 'getAllUsers']);
