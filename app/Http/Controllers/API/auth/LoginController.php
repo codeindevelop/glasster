@@ -33,10 +33,11 @@ class LoginController extends Controller
             if ($targetUser === null) {
                 return response()->json([
                     'message' => "couldn't find user account"
-                ], 404);
+                ], 200);
             } else {
                 return response()->json([
-                    'message' => "user has exist"
+                    'message' => "user has exist",
+                    'email' => $request->email
                 ], 200);
             }
         }
