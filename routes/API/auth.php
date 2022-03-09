@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\auth\AuthController;
+use App\Http\Controllers\API\auth\LoginController;
 use App\Http\Controllers\API\auth\OtpAuthController;
 use App\Http\Controllers\API\auth\PasswordResetController;
 use App\Http\Controllers\API\Auth\PermissionController;
@@ -31,6 +32,9 @@ Route::prefix('v1')->group(function () {
 
     Route::post('register', [AuthController::class, 'register']);
     Route::get('register/activation/{token}', [AuthController::class, 'signupActive']);
+
+    // account loockup for login API
+    Route::post('account-loockup', [LoginController::class, 'accountLookup']);
 
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
