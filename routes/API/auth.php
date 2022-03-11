@@ -68,7 +68,7 @@ Route::prefix('v1')->group(function () {
         // important this api updated profile by ownuser
         Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
         Route::get('users', [AuthController::class, 'getAllUsers']);
-        Route::get('profile', [AuthController::class, 'profile']);
+      
 
 
         // Roles Routes API
