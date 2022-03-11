@@ -23,26 +23,31 @@ use Illuminate\Support\Facades\DB;
 
 Route::prefix('v1')->group(function () {
 
-
+    // Check If register type has OTP
     if (DB::table('auth_settings')->where('id', 1)->value('register_type') == 'otp-mobile') {
-        // Public APIS
         Route::post('check-user-register', [OtpAuthController::class, 'checkUserRegister']);
         Route::post('otp', [OtpAuthController::class, 'OTP']);
         Route::post('verify-otp', [OtpAuthController::class, 'verifyOTP']);
     }
 
-
-    Route::post('register', [RegisterController::class, 'register']);
-    Route::get('register/activation/{token}', [RegisterController::class, 'signupActive']);
-
     // account loockup for login API
     Route::post('account-loockup', [LoginController::class, 'accountLookup']);
+
+    //  Email Loockup for Register API
+    Route::post('email-loockup', [RegisterController::class, 'emailLookup']);
+
+    Route::post('user-signup', [RegisterController::class, 'userSignup']);
+    Route::get('register/activation/{token}', [RegisterController::class, 'signupActive']);
+
 
     Route::post('login', [LoginController::class, 'login']);
     Route::post('logout', [LoginController::class, 'logout'])->middleware('auth:api');
 
 
     Route::middleware("auth:api")->group(function () {
+
+        // Register Mobile Number after signup | Get OTP Code
+        Route::post('register-mobile', [RegisterController::class, 'storeMobileNumber']);
 
         // Get User Profile
         Route::get('profile', [ProfileController::class, 'profile']);
