@@ -227,13 +227,13 @@ class RegisterController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'mobile_number' => ['required','unique:users']
+            'mobile_number' => ['required', 'unique:users']
         ]);
 
         if ($validator->fails()) {
             return response()->json([
-                'err' => $validator->errors()->first()
-            ], 400);
+                'message' => $validator->errors()->first()
+            ], 200);
         } else {
             // Get Current User
             $user = Auth::user();
@@ -273,6 +273,75 @@ class RegisterController extends Controller
 
             return response()->json([
                 'message' => 'code has ben send to user'
+            ], 200);
+        }
+    }
+
+    // Verify OTP Code
+    public function verifyMobileToken(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'confirm_code' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err' => $validator->errors()->first()
+            ], 400);
+        } else {
+            // Get Current User
+
+            $user = User::where('sms_token', $request->confirm_code)->first();
+
+            if ($user !== null) {
+
+                $user->update([
+                    'mobile_verified_at' => Carbon::now(),
+                    'sms_token' => null,
+                ]);
+
+                // set log for user
+                activity()
+                    ->withProperties(['user_id' => $user->id, 'ip' => $request->getClientIp()])
+                    ->log('user mobile verified');
+
+                return response()->json([
+                    'message' => 'mobile confirmed success',
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'code has ben expired',
+                ], 400);
+            }
+        }
+    }
+
+    // Get OTP Code Again
+    public function getMobileConfirmCodeAgain(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'mobile_number' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err' => $validator->errors()->first()
+            ], 400);
+        } else {
+
+            // Get Current User
+            $user = Auth::user();
+
+            // Create Random Code for user
+            $code = str_pad(mt_rand(625, 999999), 6, '753', STR_PAD_LEFT);
+
+            // save token in DB for validate
+            $user->update([
+                'sms_token' => $code
+            ]);
+
+            return response()->json([
+                'message' => 'code has ben created'
             ], 200);
         }
     }

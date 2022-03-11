@@ -48,6 +48,8 @@ Route::prefix('v1')->group(function () {
 
         // Register Mobile Number after signup | Get OTP Code
         Route::post('register-mobile', [RegisterController::class, 'storeMobileNumber']);
+        Route::post('confirm-mobile-code', [RegisterController::class, 'verifyMobileToken']);
+        Route::post('get-mobile-code', [RegisterController::class, 'getMobileConfirmCodeAgain']);
 
         // Get User Profile
         Route::get('profile', [ProfileController::class, 'profile']);

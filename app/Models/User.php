@@ -26,6 +26,8 @@ class User extends Authenticatable
         'profile_pic',
         'mobile_number',
         'activation_token',
+        'mobile_verified_at',
+        'email_verified_at',
         'email',
         'register_ip',
         'active',
