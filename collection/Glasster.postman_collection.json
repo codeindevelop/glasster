@@ -15,6 +15,34 @@
 							"name": "Login",
 							"item": [
 								{
+									"name": "1 - Account Loock up",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"super@admin.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/account-loockup",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"account-loockup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Login Superadmin",
 									"request": {
 										"method": "POST",
@@ -186,13 +214,13 @@
 							"name": "Register",
 							"item": [
 								{
-									"name": "Register User",
+									"name": "1- Email Loock up",
 									"request": {
 										"method": "POST",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"user_name\": \"user\",\r\n    \"first_name\": \"test\",\r\n    \"last_name\": \"example\",\r\n    \"mobile_number\": \"00\",\r\n    \"email\": \"user@test.com\",\r\n    \"password\": \"useruser\",\r\n    \"password_confirmation\": \"useruser\"\r\n}",
+											"raw": "{\r\n    \"email\": \"super@admisn.com\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -200,48 +228,104 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/api/v1/register",
+											"raw": "{{baseURL}}/api/v1/email-loockup",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"api",
 												"v1",
-												"register"
+												"email-loockup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2- Register User",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"test\",\r\n    \"last_name\": \"example\",\r\n    \"email\": \"user@test.com\",\r\n    \"password\": \"useruser\",\r\n    \"password_confirmation\": \"useruser\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/user-signup",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user-signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3 - Register Mobile",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"mobile_number\": \"09120000000\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/register-mobile",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"register-mobile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "4- Confirm OTP Code",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"confirm_code\": \"787359\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/v1/confirm-mobile-code",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"confirm-mobile-code"
 											]
 										}
 									},
 									"response": []
 								}
 							]
-						},
-						{
-							"name": "Account Loock up",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"super@admin.com\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseURL}}/api/v1/account-loockup",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"account-loockup"
-									]
-								}
-							},
-							"response": []
 						}
 					]
 				},
@@ -1446,7 +1530,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IzZGZjMmQwMjk2MjVjMDQxZTM1MTFiYTlmZWUyOTBhYjZlNmMzZjZhNGM4ZTJlODY1NDA0MDNkN2U0MDk1ZDlhMTIwM2E5MDFmZjRlYTQiLCJpYXQiOjE2NDY3NDAxOTUuMTI0NTIxLCJuYmYiOjE2NDY3NDAxOTUuMTI0NTI3LCJleHAiOjE2NjI2Mzc3OTUuMTE1ODY5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.he2rZPNokLnW1joqCYK7fdQ-KFgk049KBn0_uP__FmKdzaiJSWvN_DoQ3pOugJQXVu_BastbpmMXjnVHkcGodYBBJv89y08JucYFk32JOv6zLySTQvn7JfU1T4khWjTPN5WualFaWz0jFWJwFyWc-9WiOf6_YwdQZfLIWpbklhgGfGyC1g4Tq-PFj2_0eIWswFLejbSUO2GBOAAzqxPwi9Uy3SN0XhzqDDAM5aHJ-SyDinJ7laAXsubyApExS4vxT67-UYQBDpjDNVjGKozlLQFW2c5LzjxIuNDqU9fxbDWl29NCkNx8xMMppvU5anrXfFRNIb5zk1hQqPUuVfkZ0BR7J2YTC5CQHT890Do5NPWLyxQQb5fcJkJYo3Qo6Um7LtE_ZNMKPzpYWsuYiYJiho4CiVWnRN1nkOSXLYbff4hDAmxl12bEaH7Eoeg_eYpEhSU6Xb20OpsTZFk8hyyu77eVXxtPxGmVlilX3gGaeE2ogDm4bTOY0aM8CaL690vzGXUBsl8Y1OHJWcO3X15TRCLhAmTWRzvasyXE5v_mDczzEPfi8qhZu4UAQJNfHUaasJ6DNCt-j7JLJIa34X16qBNW90SMqLbBB7rGF1-aeAcqeHsUsY79g1-QXRuIY4cxPNy_1JcZ1ItCII3bROhFjwyR932m00gSMlmHpdxQ4QY",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGM1M2FjZmQ2OWJmZTk2YTkwNzE0MTk2YzQzNTZmMjk2Mzc5NmY3ZTljOTIxYTMwMjBiYzMxNThkMDRjZDNlNzQ2NjBmYzFhMGRhMjM3ZWYiLCJpYXQiOjE2NDcwMjY3ODkuNjY3MTY2LCJuYmYiOjE2NDcwMjY3ODkuNjY3MTc0LCJleHAiOjE2NjI5MjQzODkuNjU3MDE0LCJzdWIiOiIyNCIsInNjb3BlcyI6W119.phUcbncaOqj3IPbDi7-J8oI5bqw9NBejSllHBlHvGGRNDWfm1-0esEERES5Q_fEq6jsLa1zKk4P9cD6emLyN07Li2LH13j-4rssqfaBASwHcH8YUzGWm6GGAJNiy656Ke3S0gXhsGouHjlaUMNEN843IoG1sffWfvEsUnTKZ9tNCFlb34Esor2-GKQVclhMgt8Q01SJNMdDzPVEDbnsVSVYoXcbw7Q8IG7yXREnT7jUS2UrZ3HW7gP0ARgDpOZ_Vpy-51p4061AjdZbiExNhAzzZi4IW06zjSLr3UxHZiT3WkHYpC10KFG9oSbMKqkIdAW2rZwOGmJF7EqjMf4-0cEpYVhqa7ptjSHA5b090pFcDp8-FNsjvZaAK38O-iypOpglnBNhvAZg0A5Fz_WIi1vjvZRRTGACgN82AGdeTSogFBCsObyXFD9blQ15LIzTstKyDpzMVa3QENAj8qfxDTJXc7Jq3-L2tmPAd6wOJrI3FfIRfHnZw9ycaMtNj9Z1OVC7nthZxLey098Ke4_-_EEhOjFeKGr-F5_5y5AFZaIbD3NI3n2KIeVo55Z_CHN0VI7KfxETiMEbXlrOWTJPcaE1lt5z48ZX3WxZu8VjuG14wPQh92iN91i2U--mlBPz2TwVmdyDcXgYsKMqZ-UsRJaiCyrMCDNc2occWunQ7eQU",
 				"type": "string"
 			}
 		]
