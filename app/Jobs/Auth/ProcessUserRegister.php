@@ -45,7 +45,6 @@ class ProcessUserRegister implements ShouldQueue
         $user = $this->user;
 
         $personalUserInfo = new PersonalUserInfo([
-            // 'user_name' => $request->user_name,
             'user_id' => $user->id,
             'father_name' => null,
             'gender' => null,
