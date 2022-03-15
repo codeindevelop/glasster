@@ -1523,6 +1523,30 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Custom",
+			"item": [
+				{
+					"name": "Dashboard Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/dashboard-data",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard-data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -1530,7 +1554,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGM1M2FjZmQ2OWJmZTk2YTkwNzE0MTk2YzQzNTZmMjk2Mzc5NmY3ZTljOTIxYTMwMjBiYzMxNThkMDRjZDNlNzQ2NjBmYzFhMGRhMjM3ZWYiLCJpYXQiOjE2NDcwMjY3ODkuNjY3MTY2LCJuYmYiOjE2NDcwMjY3ODkuNjY3MTc0LCJleHAiOjE2NjI5MjQzODkuNjU3MDE0LCJzdWIiOiIyNCIsInNjb3BlcyI6W119.phUcbncaOqj3IPbDi7-J8oI5bqw9NBejSllHBlHvGGRNDWfm1-0esEERES5Q_fEq6jsLa1zKk4P9cD6emLyN07Li2LH13j-4rssqfaBASwHcH8YUzGWm6GGAJNiy656Ke3S0gXhsGouHjlaUMNEN843IoG1sffWfvEsUnTKZ9tNCFlb34Esor2-GKQVclhMgt8Q01SJNMdDzPVEDbnsVSVYoXcbw7Q8IG7yXREnT7jUS2UrZ3HW7gP0ARgDpOZ_Vpy-51p4061AjdZbiExNhAzzZi4IW06zjSLr3UxHZiT3WkHYpC10KFG9oSbMKqkIdAW2rZwOGmJF7EqjMf4-0cEpYVhqa7ptjSHA5b090pFcDp8-FNsjvZaAK38O-iypOpglnBNhvAZg0A5Fz_WIi1vjvZRRTGACgN82AGdeTSogFBCsObyXFD9blQ15LIzTstKyDpzMVa3QENAj8qfxDTJXc7Jq3-L2tmPAd6wOJrI3FfIRfHnZw9ycaMtNj9Z1OVC7nthZxLey098Ke4_-_EEhOjFeKGr-F5_5y5AFZaIbD3NI3n2KIeVo55Z_CHN0VI7KfxETiMEbXlrOWTJPcaE1lt5z48ZX3WxZu8VjuG14wPQh92iN91i2U--mlBPz2TwVmdyDcXgYsKMqZ-UsRJaiCyrMCDNc2occWunQ7eQU",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTNmZTUwMTcyMDFjMzM0NDEzNmUwMmNmNzBmN2M4NWJjMTVjOGUzZWQ0NjRhNGI1ZTAwNzg0MzQ1Mjc3NTdiZTFjOTI2NTc0Nzk2NmY4ZjAiLCJpYXQiOjE2NDcwMzQzODQuNTY4MDAzLCJuYmYiOjE2NDcwMzQzODQuNTY4MDA2LCJleHAiOjE2NjI5MzE5ODQuNTU4MDgsInN1YiI6IjQ2Iiwic2NvcGVzIjpbXX0.KNmfyLczt01c5Vzg9XcR9GRXRmf7wbQdr45QIdEfmDM_t0UVhbXWNoh7YRlSQ0FeMpALzETcXxaZY54alnrjsbQXGfJBi2R_tr2ZIPt_5VXjiGC28gcaMczwZkhI45psnri4MR4vZCtSYE4T3tjp6v-qbCSwPY6xkqx4Equ6iAraGeQG-VOhrZKviWUCK9xvOb9tumiYEAc1Uz8x-1WOiHO0QcyotJreAeNaTg3OgyMPc-tay-YPyjRpiyhaHcIACZVB3U-OJY9t80_1hihBPa922DAOIZNTmxnJ_tWlWLmXQX1DgEt7lrEejqS0WxmJv3BhNRZJ0P-j8xc449VMp6Kk4R1GIWlmj7xklAEIQ4JyF8TCLk-Ad4FjpG1NgYpPs3qd8kWwJjaFS0MsXK3n5Rg7tu4HoOiSJGfDT6R9qiVTrKvWCiG8vrZPztHVzW1Lp8gWH2-YPlL61BrAnAIQOa1-vHOVFh9X1fdL4MtqfJmdPanYm_QlT49Vh5-51GkAP99CjhLYGr312Ng6rnxaFCMOju7UjmPmGhy1hdnVKtb9V64D5OSIhFpA4kwl-oCewtD-YvtaeH-Ybd8lLawvj2HHACAC1_KO7nHg2GaN1ZfVCS0aXwStjgSrUtuBKfKPzskHQ-zeVoil95EHE6f3EHyll9zjjw-E_9pwxUicRl4",
 				"type": "string"
 			}
 		]
