@@ -1,0 +1,67 @@
+# Note : Before work with docker in server you most be instal PHP 8 and Composer 2 
+# after can use docker comppands
+# for work with Environment can user .env file
+version: "3.8"
+
+# Network
+networks:
+    gldbnetwork:
+        driver: bridge
+
+# Volumes
+volumes:
+    gl-mysql-data:
+        driver: local
+    gl-pmadata:
+        driver: local
+
+# Services
+services:
+    mysql:
+        image: "mysql:8"
+        container_name: "${MYSQL_CONTAINER_NAME}"
+        restart: "${MYSQL_RESTART}"
+        tty: true
+        ports:
+            - "${DB_PORT}:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PWD}"
+            MYSQL_USER: "${DB_USERNAME}"
+            MYSQL_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "${MYSQL_ALLOW_EMPTY_PASSWORD}"
+            MYSQL_DATABASE: "${DB_DATABASE}"
+        volumes:
+            - "gl-mysql-data:/var/lib/mysql/"
+        networks:
+            - gldbnetwork
+
+    phpmyadmin:
+        image: "${PMA_IMAGE}"
+        container_name: "${PMA_CONTAINER_NAME}"
+        environment:
+            PMA_PMADB: 1
+            PMA_ARBITRARY: 1
+            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PWD}"
+            # PMA_HOST: "${PMA_HOST}"
+            # PMA_PORT: "${DB_PORT}"
+        restart: "${PMA_RESTART}"
+        depends_on:
+            - mysql
+
+        ports:
+            - "${PMA_PORT}:80"
+        volumes:
+            - "gl-pmadata:/etc/phpmyadmin/config.user.inc.php"
+        networks:
+            - gldbnetwork
+        links:
+            - mysql
+
+    redis:
+        image: "${REDIS_IMAGE}"
+        container_name: "${REDIS_CONTAINER_NAME}"
+        restart: "${REDIS_RESTART}"
+        ports:
+            - "${REDIS_PORT}:6379"
+        networks:
+            - gldbnetwork
