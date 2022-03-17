@@ -9,7 +9,7 @@ use Database\Seeders\Email\AuthEmailSeeder;
 use Database\Seeders\Localization\CountrySeeder;
 use Database\Seeders\Localization\LanguageSeeder;
 use Database\Seeders\Localization\TimeZoneSeeder;
-use Database\Seeders\Settings\AuthSettingsSeeder;
+
 use Database\Seeders\Settings\EmailSettingsSeeder;
 use Database\Seeders\Settings\GeneralSettingsSeeder;
 use Database\Seeders\Settings\LocalizationSettingsSeeder;
@@ -49,9 +49,6 @@ class DatabaseSeeder extends Seeder
         // Localization Settings Seeder
         $this->call(LocalizationSettingsSeeder::class);
 
-        // Auth Settings Seeder
-        $this->call(AuthSettingsSeeder::class);
-
         // SEO Settings Seeder
         $this->call(SeoSettingsSeeder::class);
 
@@ -70,7 +67,7 @@ class DatabaseSeeder extends Seeder
         // Roles , Permissions and default admin seeder
         $this->call(PermissionsSeeder::class);
 
-        
+
         // Auth Email Templates Seeder
         $this->call(AuthEmailSeeder::class);
 

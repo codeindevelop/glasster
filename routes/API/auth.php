@@ -23,12 +23,10 @@ use Illuminate\Support\Facades\DB;
 
 Route::prefix('v1')->group(function () {
 
-    // Check If register type has OTP
-    if (DB::table('auth_settings')->where('id', 1)->value('register_type') == 'otp-mobile') {
-        Route::post('check-user-register', [OtpAuthController::class, 'checkUserRegister']);
-        Route::post('otp', [OtpAuthController::class, 'OTP']);
-        Route::post('verify-otp', [OtpAuthController::class, 'verifyOTP']);
-    }
+    Route::post('check-user-register', [OtpAuthController::class, 'checkUserRegister']);
+    Route::post('otp', [OtpAuthController::class, 'OTP']);
+    Route::post('verify-otp', [OtpAuthController::class, 'verifyOTP']);
+
 
     // account loockup for login API
     Route::post('account-loockup', [LoginController::class, 'accountLookup']);
@@ -68,7 +66,7 @@ Route::prefix('v1')->group(function () {
         // important this api updated profile by ownuser
         Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
         Route::get('users', [AuthController::class, 'getAllUsers']);
-      
+
 
 
         // Roles Routes API

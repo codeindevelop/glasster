@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Blog;
+namespace App\Http\Controllers\API\blog;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
