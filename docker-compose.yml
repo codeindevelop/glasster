@@ -5,14 +5,14 @@ version: "3.8"
 
 # Network
 networks:
-    gldbnetwork:
+    dbnetwork:
         driver: bridge
 
 # Volumes
 volumes:
-    gl-mysql-data:
+    mysql-data:
         driver: local
-    gl-pmadata:
+    pmadata:
         driver: local
 
 # Services
@@ -31,9 +31,9 @@ services:
             MYSQL_ALLOW_EMPTY_PASSWORD: "${MYSQL_ALLOW_EMPTY_PASSWORD}"
             MYSQL_DATABASE: "${DB_DATABASE}"
         volumes:
-            - "gl-mysql-data:/var/lib/mysql/"
+            - "mysql-data:/var/lib/mysql/"
         networks:
-            - gldbnetwork
+            - dbnetwork
 
     phpmyadmin:
         image: "${PMA_IMAGE}"
@@ -51,9 +51,9 @@ services:
         ports:
             - "${PMA_PORT}:80"
         volumes:
-            - "gl-pmadata:/etc/phpmyadmin/config.user.inc.php"
+            - "pmadata:/etc/phpmyadmin/config.user.inc.php"
         networks:
-            - gldbnetwork
+            - dbnetwork
         links:
             - mysql
 
@@ -64,4 +64,4 @@ services:
         ports:
             - "${REDIS_PORT}:6379"
         networks:
-            - gldbnetwork
+            - dbnetwork
