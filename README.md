@@ -29,7 +29,9 @@ Run the following commands to install PHP and PHP FPM packages:
 <br>
 ```
 sudo apt update
+sudo add-apt-repository ppa:ondrej/php 
 sudo apt install php8.0-fpm
+sudo apt install openssl php-common php-curl php-json php-mbstring php-mysql php-xml php-zip
 ```
 Once the installation is completed, the FPM service will start automatically. To check the status of the service, run
 <br>
@@ -51,7 +53,11 @@ You can now edit the Nginx server block and add the following lines so that Ngin
 <br>
 
 
-## Nginx Config
+## Nginx Install and Config 
+
+```
+sudo apt install nginx
+```
 <br>
 for config nginx server you most be create `sitename-api` file in `/etc/nginx/sites-avalible` folder after that paste below codes in `sitename-api` file 
 
@@ -197,6 +203,14 @@ server {
 ```
 
 Save the file and exit the editor.
+
+<br>
+
+after that you most be link site avalible with site enable
+
+```
+sudo ln -s /etc/nginx/sites-available/api.sitename.com /etc/nginx/sites-enabled/
+```
 
 Next, test to make sure that there are no syntax errors in any of your Nginx configuration files:
 
